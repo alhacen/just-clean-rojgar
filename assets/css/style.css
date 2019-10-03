@@ -1,0 +1,30 @@
+nav a{color:#4d4d4d !important}
+.brand-logo{padding-left:15px!important}
+.last_nav_link{padding-right:15px}
+.pages{margin-top:10px;display: none}
+#registration_form_html div{margin:5px}
+#page-description{display:none}
+.back_btn:hover{background-color:#d9d9d9}
+.back_btn{-webkit-transition: background-color .2s;  transition: background-color .2s;cursor:pointer}
+nav a{color:#4d4d4d !important}
+.brand-logo{padding-left:15px!important}
+.last_nav_link{padding-right:15px}
+.block {
+margin:15px;
+margin-left:tu
+  display: inline-block;
+  width: 20%;
+height:100px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}

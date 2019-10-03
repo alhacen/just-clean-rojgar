@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>{{page.title}}</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+</head>
+<body>
+  <nav class="white">
+    <div class="nav-wrapper ">
+      <a href="/" class="brand-logo"><img style="height:60px" src="https://static.wixstatic.com/media/bcdc7c_6c5b74d623b1425f8417c5e6018ac7d7~mv2.png/v1/fill/w_265,h_64,al_c,q_80,usm_0.66_1.00_0.01/Logo.webp"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="jobseekers.html">JOB SEEKERS</a></li>
+        <li><a href="employer.html">EMPLOYER</a></li>
+        <li><a href="#badges.html">TRAINING</a></li>
+        <li class="last_nav_link"><a href="#collapsible.html">ROJGAR TIME</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="main">
+		{{content}}
+  </div>
+
+	{% include _footer.html %}
+
+
+</body>
+</html>

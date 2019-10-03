@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>job seekers</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+</head>
+<body>
+
+<ul id="slide-out" class="sidenav sidenav-fixed grey darken-4">
+    <li><a href="#!home">Home</a></li>
+    <li><a href="#!post_now_job">Post New Job</a></li>
+    <li><a href="#!seekers_applied">Seekers Applied</a></li>
+</ul>
+  <div id="main" style="background-color:#e6e6e6">
+    <nav class="white">
+        <div class="nav-wrapper ">
+            <a href="#" class="brand-logo"><img style="height:60px" src="https://static.wixstatic.com/media/bcdc7c_6c5b74d623b1425f8417c5e6018ac7d7~mv2.png/v1/fill/w_265,h_64,al_c,q_80,usm_0.66_1.00_0.01/Logo.webp"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#sass.html">Home</a></li>
+            <li class="last_nav_link"><a href="#collapsible.html">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="main-content">
+        <div class="pages" id="home">
+home
+</div>
+<div class="pages" id="add_job_form">
+    <div>
+        <div class="row">
+            <div class="col s10 input-field ">
+                <input id="job_description" type="text" class="validate" />
+                <label for="job_description">Job Description</label>
+            </div>
+            <div>
+                <input type="button" class="btn grey" value="post" />
+            </div>
+            <div class="col s12 input-field ">
+                <select>
+                <option value="" disabled="" selected="">profile</option>
+                <option value="Experience (0 to 1 yr)">asdf</option>
+                <option value="Experience (1 to 2 yrs)">asdf</option>
+                </select>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+</div>
+<div class="pages" id="post_now_job">
+    <div>
+    <div class="row">
+        <div class="col s8">
+            <h4>Jobs: <a href="#!add_job_form" class="btn grey">New</a></h4>
+        </div>
+        <div class="col s2">
+            <div class="col s12 input-field ">
+                <input id="q" type="text" class="validate" />
+                <label for="q">Search</label>
+            </div>
+        </div>
+        </div>
+        <ul class="collection">
+            <li class="collection-item">            
+                <div class="row">
+                    <div class="col s6"><a href="#!">Title</a></div>
+                    <div class="col s4">Description</div>
+                    <div class="col s2"><a href="#!">Delete</a></div>
+                </div>
+            </li>
+            <li class="collection-item">            
+                <div class="row">
+                    <div class="col s6"><a href="#!">Title</a></div>
+                    <div class="col s4">Description</div>
+                    <div class="col s2"><a href="#!">Delete</a></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="pages" id="seekers_applied">
+ddddddddd
+</div>
+<style>
+    .collection li a{padding:15px!important}
+    .collection div{margin:0!important}
+</style>
+
+
+    </div>
+  </div> 
+  <footer class="page-footer green ">
+		<div class="container">
+		  <div class="row">
+			<div class="col l6 s12">
+			  <h5 class="white-text">Footer Content</h5>
+			  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+			</div>
+			<div class="col l4 offset-l2 s12">
+			  <h5 class="white-text">Links</h5>
+			  <ul>
+				<li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
+				<li><a class="grey-text text-lighten-3" href="#!">Careers With Us</a></li>
+				<li><a class="grey-text text-lighten-3" href="#!">Help</a></li>
+				<li><a class="grey-text text-lighten-3" href="#!"></a>Terms Of Use</li>
+				<li><a class="grey-text text-lighten-3" href="#!">Privacy Policy</a></li>
+				<li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+
+			  </ul>
+			</div>
+		  </div>
+		</div>
+		<div class="footer-copyright">
+		  <div class="container">
+		  © 2014 Copyright Text
+		  <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+		  </div>
+		</div>
+	  </footer>
+
+</body>
+</html>
+<script>
+    function _(a){return document.getElementById(a)}
+    var elems = document.querySelectorAll('.tabs');
+    var instance = M.Tabs.init(elems);
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelector('.modal');
+        var instances = M.Modal.init(elems);
+        // instances.open();
+        var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+        
+    });
+
+    var pages=["home","post_now_job","seekers_applied","add_job_form"]; // allowed pages
+	current_page="";
+	default_page=["home"] //open page if ther is no hash
+	function change_page() {
+		if(pages.includes(location.hash.substr(2)) || location.hash=="" || location.hash=="#!"){
+		if(current_page!=""){
+			_(current_page.substr(2)).style.display="none";
+		}if(location.hash=="" || location.hash=="#!"){        
+			location.hash="#!"+default_page;
+		}else if(pages.includes(location.hash.substr(2))){
+			_(location.hash.substr(2)).style.display="block";
+		}
+		current_page=location.hash;
+		}
+	}
+	window.onhashchange = change_page;
+	change_page();
+</script>
+<style>
+        header, #main, footer {
+      padding-left: 300px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      header, #main, footer {
+        padding-left: 0;
+      }
+    }
+#main{min-height: 100%}    
+nav a{color:#4d4d4d !important}
+#slide-out a{color:white !important}
+.brand-logo{padding-left:15px!important}
+.last_nav_link{padding-right:15px}
+#main-content{padding:20px}
+</style>
