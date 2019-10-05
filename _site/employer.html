@@ -19,31 +19,31 @@
     </div>
   </nav>
   <div id="main">
-		<div id="login_form" class="row pages">
+		<div id="login_form" class="row pages animated">
 		<div class="col s6">
   897654 bla bla bla
 		</div>
-		<div class="col s5" id="login_form_html">
+		<div class="col s5 card" id="login_form_html">
 			<div class="row" id="form_header">
 			  <div class="col back_btn" style="font-size:40px;padding:0 20 0 20px"  onclick="window.location.hash='#!'"><b><</b></div>
 			  <div class="center" style="font-size:40px;padding:0 10 0 10px">Login</div>
               <div class="col s12 input-field con">
-                <input id="username" type="text" class="validate">
-                <label for="username">USERNAME</label>
+                <input id="login_username" type="text" class="validate">
+                <label for="login_username">USERNAME</label>
               </div>
               <div class="col s12 input-field con">
-                <input id="password" type="password" class="validate">
-                <label for="password">PASSWORD</label>
+                <input id="login_password" type="password" class="validate">
+                <label for="login_password">PASSWORD</label>
               </div>
-              <div class="center"><a href="" class="btn green waves-effect waves-light">Login</a></div>
+              <div class="center"><a onclick="login('employer')" class="btn green waves-effect waves-light">Login</a></div>
 			</div>
 		</div>
 	</div>
-  <div id="registration_form" class="row  pages">
+  <div id="registration_form" class="row  pages animated">
 	<div class="col s6">
 23187 bla bla bla
 	</div>
-	<div class="col s5" id="registration_form_html">
+	<div class="col s5 card" id="registration_form_html">
 	  <div class="row" id="form_header">
 		<div class="col back_btn" style="font-size:40px;padding:0 20 0 20px"  onclick="window.location.hash='#!'"><b><</b></div>
 		<div class="center" style="font-size:40px;padding:0 10 0 10px">Registration</div>
@@ -56,7 +56,7 @@
 	  <div class="center"><a href="#!registration_form" class="btn green waves-effect waves-light">Register</a></div>
 	</div>
 </div>
-  <div id="page-description" class="row pages">
+  <div id="page-description" class="row pages animated">
 	<div class="col l6 s12">
 	  54564 bla bla bla 
 	</div>
@@ -83,10 +83,12 @@
 		if(pages.includes(location.hash.substr(2)) || location.hash=="" || location.hash=="#!"){
 		if(current_page!=""){
 			_(current_page.substr(2)).style.display="none";
+			_(current_page.substr(2)).classList.remove("fadeIn");
 		}if(location.hash=="" || location.hash=="#!"){        
 			location.hash="#!"+default_page;
 		}else if(pages.includes(location.hash.substr(2))){
 			_(location.hash.substr(2)).style.display="block";
+			_(location.hash.substr(2)).classList.add("fadeIn");
 		}
 		current_page=location.hash;
 		}
