@@ -15,6 +15,7 @@ home
     <div>
     <form id="add_job_form_html">
     <input type="hidden" name="job_id" id="job_id">
+    <input type="hidden" name="seekers_applied" id="seekers_applied_tmp">
         <div class="row">
             <div class="col s10 input-field ">
                 <input id="job_title" name="job_title" type="text" class="validate">
@@ -59,7 +60,7 @@ home
                 </select>
             </div>
             <div class="col s12 l4 input-field ">
-            <input type="text" class="datepicker" placeholder="last_date" value="Last Date For Apply">
+            <input type="text" class="datepicker" placeholder="Last Date For Apply">
             </div>
         </div>
         <div>
@@ -93,9 +94,9 @@ home
 </div>
 <div class="pages card" style="padding:25px" id="seekers_applied">
     <ul id="applied_seekers_list" class="collection">
-            <li class="collection-item" onclick='window.location="#!display_applied_seekers[162]"' style="cursor:pointer">            
+            <li class="collection-item" onclick='window.location="#!display_applied_seekers[162]"' style="cursor:pointer">   
                 <div class="row">
-                    <div class="col s12"><a href="#!">Title</a><span class="new badge green" data-badge-caption="Applications">4</span></div>                    
+                    <div class="col s12">Title<span class="new badge green" data-badge-caption="Applications">4</span></div> 
                 </div>
             </li>
         </ul>

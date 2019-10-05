@@ -36,6 +36,7 @@ home
     <div>
     <form id="add_job_form_html">
     <input type="hidden" name="job_id" id="job_id" />
+    <input type="hidden" name="seekers_applied" id="seekers_applied_tmp" />
         <div class="row">
             <div class="col s10 input-field ">
                 <input id="job_title" name="job_title" type="text" class="validate" />
@@ -80,7 +81,7 @@ home
                 </select>
             </div>
             <div class="col s12 l4 input-field ">
-            <input type="text" class="datepicker" placeholder="last_date" value="Last Date For Apply" />
+            <input type="text" class="datepicker" placeholder="Last Date For Apply" />
             </div>
         </div>
         <div>
@@ -114,9 +115,9 @@ home
 </div>
 <div class="pages card" style="padding:25px" id="seekers_applied">
     <ul id="applied_seekers_list" class="collection">
-            <li class="collection-item" onclick="window.location=&quot;#!display_applied_seekers[162]&quot;" style="cursor:pointer">            
+            <li class="collection-item" onclick="window.location=&quot;#!display_applied_seekers[162]&quot;" style="cursor:pointer">   
                 <div class="row">
-                    <div class="col s12"><a href="#!">Title</a><span class="new badge green" data-badge-caption="Applications">4</span></div>                    
+                    <div class="col s12">Title<span class="new badge green" data-badge-caption="Applications">4</span></div> 
                 </div>
             </li>
         </ul>
@@ -177,7 +178,7 @@ var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private V
 <script>
     	//{"title":"new_one","job_profile":"job profile","duration":"duration in days","criteria":"creteria for job","experience":"if !any experience then =>0","last_date":"last date to apply for job"}
 	if(localStorage.getItem("jobs")==undefined||localStorage.getItem("jobs")=="[]"){
-        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla"}]');
+        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"4"}]');
     }
     function update_job_list(){
         _("employer_job_lists").innerHTML="";
@@ -186,7 +187,16 @@ var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private V
             _("employer_job_lists").innerHTML+='<li class="collection-item"> <div class="row"> <div class="col s6"><span style="margin-right:10px;margin-left:-10px">'+(i+1)+'.</span><a href="#!">'+jobs[i]["job_title"]+'</a></div> <div class="col s4">'+jobs[i]['job_profile']+'</div> <div class="col s2"><a onclick="delete_job('+jobs[i]['job_id']+')">Delete</a></div> </div> </li>'
         }
     }
-    update_job_list()
+    function update_applied_seekers_list(){
+        _("applied_seekers_list").innerHTML="";
+        jobs=JSON.parse(localStorage.getItem("jobs"));
+        for(i=0;i<jobs.length;i++){
+            //_("applied_seekers_list").innerHTML+='<li class="collection-item"> <div class="row"> <div class="col s6"><span style="margin-right:10px;margin-left:-10px">'+(i+1)+'.</span><a href="#!">'+jobs[i]["job_title"]+'</a></div> <div class="col s4">'+jobs[i]['job_profile']+'</div> <div class="col s2"><a onclick="delete_job('+jobs[i]['job_id']+')">Delete</a></div> </div> </li>'
+            _("applied_seekers_list").innerHTML+='<li class="collection-item" onclick=\'window.location="#!display_applied_seekers['+jobs[i]['job_id']+']"\' style="cursor:pointer"> <div class="row"> <div class="col s12">'+jobs[i]['job_title']+'<span class="new badge green" data-badge-caption="Applications">'+jobs[i]['seekers_applied']+'</span></div> </div> </li>'
+        }
+    }
+    update_job_list();
+    update_applied_seekers_list();
 	//
     function _(a){return document.getElementById(a)}
     var elems = document.querySelectorAll('.tabs');

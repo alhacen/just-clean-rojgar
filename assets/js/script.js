@@ -53,10 +53,12 @@ function delete_job(job_id){
     }
     localStorage.setItem("jobs",JSON.stringify(jobs))
     update_job_list()
+    update_applied_seekers_list()
 }
 (function() {
     function toJSONString( form ) {
         _("job_id").value=Math.floor(Math.random() * Math.floor(3000))
+        _("seekers_applied_tmp").value=Math.floor(Math.random() * Math.floor(100))
         var not_mandatory_field=["branch"];
         var obj = {};
         var elements = form.querySelectorAll( "input, select, textarea" );
