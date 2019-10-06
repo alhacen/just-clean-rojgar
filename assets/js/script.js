@@ -2,10 +2,29 @@ function _(a){return document.getElementById(a);}
 function string_bw__word(string, w1, w2){
     return string.split(w1).pop().split(w2)[0];
 }
+function _request(url = '',_method, data) {
+// Default options are marked with *
+    return fetch(url, {
+        method: _method, // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, cors, *same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'include', // include, *same-origin, omit
+        headers: {
+            //'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'	
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrer: 'no-referrer', // no-referrer, *client
+        body: data, // body data type must match "ConteExperiencent-Type" header
+    })
+    .then(response => response.json()); // parses JSON response into native JavaScript objects 
+}
 function seeker_exist(mobile_no){
-    /*
-    using xhr check if user exist
-    */
+    // _request("[]/exe/?seeker_exist")
+    // .then(function(data) {
+    //     return (data.data==1)?1:0;
+    // })
+    // .catch(error => console.error(error));
     return (mobile_no==9670820138)?1:0;
 }
 function seeker_auth(mobile_no,otp){
@@ -30,7 +49,7 @@ function login(a){
         }else if(seeker_auth(_("mobile_no_for_login").value,_("login_otp").value)){
             // http request for login
             alert("logged successfully")
-            //window.location="dashboard"
+            window.location="/seeker_dash/"
         }else{
             alert("AH:enter correct otp");
             
@@ -85,8 +104,9 @@ function delete_job(job_id){
             //alert(json);
             console.log(json);
             jobs.push(JSON.parse(json))
-            localStorage.setItem("jobs",JSON.stringify(jobs))
-            window.location="/employer_dash/"
+            alert(json)
+            // localStorage.setItem("jobs",JSON.stringify(jobs))
+            // window.location="/employer_dash/"
 
 /*
                 loading_scren_toggle()
@@ -106,3 +126,31 @@ function delete_job(job_id){
         
     });
 })();
+function toJSONString( form ) {
+    var not_mandatory_field=["branch"];
+    var obj = {};
+    var elements = form.querySelectorAll( "input, select, textarea" );
+    for( var i = 0; i < elements.length; ++i ) {
+        var element = elements[i];
+        var value = element.value;
+        var name = element.name;
+        if(element.getAttribute("iform_init")!=null){
+            var input_data=JSON.parse(element.getAttribute("iform_init"))
+            required=input_data['alert']
+            alert_name = input_data['name'];
+        }else{
+            required=null;
+        }
+        if( name ) {
+            obj[ name ] = value;
+        }
+        if((name!=""&&value==""&&!not_mandatory_field.includes(name))&&required){alert( alert_name +" is required");throw new Error( alert_name +" is required");}
+    }
+    //obj['img']=_("preview_img").src.replace(location.href,"")
+    return JSON.stringify( obj );
+}
+function submit_iform(e){
+    if(e.form.getAttribute("iform")!=null){
+        alert(toJSONString(e.form))
+    }
+}

@@ -11,15 +11,16 @@
 
 <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4">
     <!-- <li><a href="#!home">Home</a></li> -->
-    <li><a href="#!post_new_job">Post New Job</a></li>
-    <li><a href="#!seekers_applied">Seekers Applied</a></li>
+    <li><a href="#!jobs_available">Available Jobs</a></li>
+    <li><a href="#!jobs_applied">Job applied</a></li>
+    <li><a href="#!profile">Profile</a></li>
 </ul>
   <div id="main" style="background-color:#e6e6e6">
     <nav class="white">
         <div class="nav-wrapper ">
             <a href="#" class="brand-logo"><img style="height:60px" src="https://static.wixstatic.com/media/bcdc7c_6c5b74d623b1425f8417c5e6018ac7d7~mv2.png/v1/fill/w_265,h_64,al_c,q_80,usm_0.66_1.00_0.01/Logo.webp"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#sass.html">Home</a></li>
+            <!-- <li><a href="#sass.html">Home</a></li> -->
             <li class="last_nav_link"><a href="/">Log Out</a></li>
             </ul>
         </div>
@@ -28,102 +29,82 @@
         <div class="pages" id="home">
 home
 </div>
-<div class="pages card" style="padding:25px" id="add_job_form">
-    <div class="row">
-        <div class="col back_btn" style="font-size:40px;padding:0 20 0 20px" onclick="window.location.hash='#!'"><b>&lt;</b></div>
-        <div class="center" style="font-size:40px;padding:0 10 0 10px">Post a New Job</div>
-    </div>
+<div class="pages card row" style="padding:25px" id="profile">
     <div>
-    <form id="add_job_form_html">
-    <input type="hidden" name="job_id" id="job_id" />
-    <input type="hidden" name="seekers_applied" id="seekers_applied_tmp" />
-        <div class="row">
-            <div class="col s10 input-field ">
-                <input id="job_title" name="job_title" type="text" class="validate" />
-                <label for="job_title">Job Title</label>
-            </div>
-            <div>
-                <input type="submit" class="btn grey" value="post" />
+        <form id="asdf" iform="">
+            <div class="col l4 s12 input-field con">
+                <input id="candidate_name" name="candidate_name" type="text" class="validate" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Candidate Name&quot;}" />
+                <label for="candidate_name">Candidate Name</label>
             </div>
             <div class="col l8 s12 input-field ">
-                <input id="job_description" name="job_description" type="text" class="validate" />
-                <label for="job_description">Job Description</label>
+                <input id="address" name="address" type="text" class="validate" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Address&quot;}" />
+                <label for="address">Address</label>
             </div>
-            <div class="col s12 l4 input-field ">
-                <select id="job_profile" name="job_profile">
-                    <option value="" disabled="" selected="">Job Profile</option>
-                </select>
+            <div class="col l4 s12 input-field ">
+                <input id="mobile_no" name="mobile_no" type="text" class="validate" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Mobile No.&quot;}" />
+                <label for="mobile_no">Mobile No.</label>
             </div>
-            <div class="col s12 l4 input-field ">
-                <select name="job_creteria">
-                    <option value="" disabled="" selected="">Job creteria</option>
+            <div class="col l4 s12 input-field ">
+                <input id="adhaar_no" name="adhaar_no" type="text" class="validate" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Adhaar No.&quot;}" />
+                <label for="adhaar_no">Adhaar No</label>
+            </div>
+            <div class="col l4 s12 input-field ">
+                <input id="father_name" name="father_name" type="text" class="validate" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Fathers Name&quot;}" />
+                <label for="father_name">Father's Name</label>
+            </div>
+            <div class="col l4 s12 input-field ">
+                <select name="creteria" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Qualifications&quot;}">
+                    <option value="" disabled="" selected="">Educational Qualifications</option>
+                    <option value="Below Class 5th">Below Class 5th</option>
                     <option value="Class 5th to 9th">Class 5th to 9th</option>
                     <option value="10th Pass">10th Pass</option>
                     <option value="12th Pass">12th Pass</option>
+                    <option value="ITI">ITI</option>
                     <option value="Polytechnic">Polytechnic</option>
                     <option value="Diploma">Diploma</option>
-                    <option value="Graduate(B.A.,B.Com.,B.Sc">Graduate(B.A.,B.Com.,B.Sc)</option>
-                    <option value="Other Graduate(Any Stream)">Other Graduate(Any Stream)</option>
-                    <option value="B.Tech(Any Stream)">B.Tech(Any Stream)</option>
-                    <option value="M.Tech(Any Stream)">M.Tech(Any Stream)</option>
-                    <option value="Post Greaduate(Any Stream)">Post Greaduate(Any Stream)</option>
-                    <option value="MBA/PGDM(Any Stream)">MBA/PGDM(Any Stream)</option>
+                    <option value="Graduate (B.A.,B.Com., B.Sc.)">Graduate (B.A.,B.Com., B.Sc.)</option>
+                    <option value="Other Graduate (Any Stream)">Other Graduate (Any Stream)</option>
+                    <option value="B.Tech. (Any Stream)">B.Tech. (Any Stream)</option>
+                    <option value="M.Tech. (Any Stream)">M.Tech. (Any Stream)</option>
+                    <option value="Post Graduate (Any Stream)">Post Graduate (Any Stream)</option>
+                    <option value="MBA / PGDM (Any Stream)">MBA / PGDM (Any Stream)</option>
                 </select>
             </div>
-            <div class="col s12 l4 input-field ">
-                <select name="job_experience">
-                    <option value="" disabled="" selected="">Experience</option>
-                    <option value="Experience (0 to 1 yrs)">Experience (0 to 1 yrs)</option>
+            <div class="col l4 s12 input-field ">
+                <select name="job_experience" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Work Experience&quot;}">
+                    <option value="" disabled="" selected="">Work Experience</option>
+                    <option value="Experience (0 to 1 yr)">Experience (0 to 1 yr)</option>
                     <option value="Experience (1 to 2 yrs)">Experience (1 to 2 yrs)</option>
-                    <option value="Experience (2 to 3 yrs)">Experience (2 to 3 yrs)</option>
-                    <option value="Experience (3 to 4 yrs)">Experience (3 to 4 yrs)</option>
-                    <option value="Experience (above 5 yrs)">Experience (above 5 yrs)</option>
+                    <option value="Experience (2 to 5 yrs)">Experience (2 to 5 yrs)</option>
+                    <option value="Experience (Above 5 yrs)">Experience (Above 5 yrs)</option>
                 </select>
             </div>
-            <div class="col s12 l4 input-field ">
-            <input type="text" class="datepicker" placeholder="Last Date For Apply" />
+            <div class="col l4 s12 input-field ">
+                <select id="job_profile" iform_init="{&quot;required&quot;:true,&quot;alert&quot;:true,&quot;name&quot;:&quot;Applied Position Required&quot;}">
+                <option value="" disabled="" selected="">Position applied for</option>
+                </select>
             </div>
-        </div>
-        <div>
-        </div>
+            <div class="col l6 s12 input-field ">
+                <input id="work_experience" name="other_work_experience" type="text" class="validate" />
+                <label for="work_experience">Work Experience</label>
+            </div>
+            <div class="col l6 s12 input-field ">
+                <input id="additional_job_for" name="additional_applied_job" type="text" class="validate" />
+                <label for="additional_job_for">Mention any Additional Job Applied For</label>
+            </div>
+            <div class="center"><input type="button" onclick="submit_iform(this)" value="Update" class="btn green " /></div>
         </form>
     </div>
 </div>
-<div class="pages card" style="padding:25px" id="post_new_job">
+<div class="pages" id="jobs_available">
     <div>
-    <div class="row">
-        <div class="col s8">
-            <h4>Jobs: <a href="#!add_job_form" class="btn grey">New</a></h4>
+        <div class="row">
+        a
         </div>
-        <!-- <div class="col s2">
-            <div class="col s12 input-field ">
-                <input id="q" type="text" class="validate">
-                <label for="q">Search</label>
-            </div>
-        </div> -->
-        </div>
-        <ul id="employer_job_lists" class="collection">
-            <li class="collection-item">            
-                <div class="row">
-                    <div class="col s6"><a href="#!">Title</a></div>
-                    <div class="col s4">Description</div>
-                    <div class="col s2"><a href="#!">Delete</a></div>
-                </div>
-            </li>
-        </ul>
     </div>
 </div>
-<div class="pages card" style="padding:25px" id="seekers_applied">
-    <ul id="applied_seekers_list" class="collection">
-            <li class="collection-item" onclick="window.location=&quot;#!display_applied_seekers[162]&quot;" style="cursor:pointer">   
-                <div class="row">
-                    <div class="col s12">Title<span class="new badge green" data-badge-caption="Applications">4</span></div> 
-                </div>
-            </li>
-        </ul>
-</div>
-<div class="pages card" style="padding:25px" id="display_applied_seekers">
-asdf
+<div class="pages" id="jobs_applied">
+b
 </div>
 <style>
     /* .collection li a{padding:15px!important} */
@@ -132,13 +113,14 @@ asdf
 
 <script>
 var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private Vehicles)","Driver (Commercial Vehicles)","Driver (Heavy Vehicles - Bus, Truck, etc.)","Bouncer","Security Staff","Security Guard","Security Guard (Armed)","PSO (Personal Security Officer)","Computer Operator","Data Entry Operator","Plumber","Electrician","Housekeeping Staff","Retail Sales Staff","Retail Store Keeper","Cashier","Sales Manager","Field Officer","Supervisor","Beautician","BPO / Call Centre","Receptionist","Management / Admin","HR","Accounts Executive","GST Executive","ESIC / PF Executive","Cook","Tailor","Delivery Jobs","Carpenter","Painter","Mason","Construction Worker","Bar Binder","Welder","CNC machine operator","Fitter","Domestic Help / Maid / Home-cleaning","Rider","AC Repairing / AC Service","Electronics Repair","Home Appliances Repair","Waiter (Restaurant)","Bartender","Hair Dresser (Male)","Hair Dresser (Female)","Personal Assistant","Peon","DG Operator","STP Operator","WTP Operator","Lift Operator","Lift Technician","Water Tank Cleaner","Car Washer / Cleaner","Web Designer","Web Developer","Graphic Designer","Fitness Trainer","Yoga Trainer","Logistics Staff (Loading / Unloading )","Packaging Staff","Warehouse Staff","Nursing Staff","Patient Care","Baby Sitter / Nanny / Mother Care","Parking Management Staff","MST (Multi Tasking Staff)","Housekeeping Supervisor","Security Supervisor","Training Supervisor","Landscaping supervisor","Plumbing Supervisor","Manpower Mobiliser","Leather Worker","Dairy Worker","Façade Cleaner","Band-Baaja Staff","Party Singers","Others",]
-	for(i=0;i<job_profile_list.length;i++){
-		var option = document.createElement("option");
-		option.text = job_profile_list[i];
-		option.value = job_profile_list[i];
-		var select = _("job_profile");
-		select.appendChild(option);
-	}
+for(i=0;i<job_profile_list.length;i++){
+    var option = document.createElement("option");
+    option.text = job_profile_list[i];
+    option.value = job_profile_list[i];
+    var select = _("job_profile");
+    select.appendChild(option);
+}
+    
 </script>
 
 
@@ -176,9 +158,10 @@ var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private V
 </body>
 </html>
 <script>
+    /*
     	//{"title":"new_one","job_profile":"job profile","duration":"duration in days","criteria":"creteria for job","experience":"if !any experience then =>0","last_date":"last date to apply for job"}
 	if(localStorage.getItem("jobs")==undefined||localStorage.getItem("jobs")=="[]"){
-        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"4"},{"job_id":"931","seekers_applied":"32","job_title":"developer","job_description":"have to create react app","job_profile":"IT / ITeS","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"1002","seekers_applied":"66","job_title":"drill operator","job_description":"have to operate drill machine","job_profile":"Machine Operator / Helper","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"2234","seekers_applied":"83","job_title":"drive","job_description":"have to drive bus from jamia to batla house ","job_profile":"Driver (Private Vehicles)","job_creteria":"10th Pass","job_experience":"Experience (1 to 2 yrs)"}]');
+        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"4"}]');
     }
     function update_job_list(){
         _("employer_job_lists").innerHTML="";
@@ -197,6 +180,7 @@ var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private V
     }
     update_job_list();
     update_applied_seekers_list();
+    */
 	//
     function _(a){return document.getElementById(a)}
     var elems = document.querySelectorAll('.tabs');
@@ -214,10 +198,10 @@ var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private V
     });
     
 
-    var pages=["home","post_new_job","seekers_applied","add_job_form"]; // allowed pages
-    var functions=["display_applied_seekers"]
+    var pages=["home","jobs_available","jobs_applied","profile"]; // allowed pages
+    var functions=["asdf"]
 	current_page="";
-	default_page=["post_new_job"] //open page if ther is no hash
+	default_page=["jobs_available"] //open page if ther is no hash
 	function change_page() {
 		if(pages.includes(location.hash.substr(2)) || location.hash=="" || location.hash=="#!" || functions.includes(string_bw__word(location.hash,"#!","["))){
             if(functions.includes(string_bw__word(location.hash,"#!","["))){requested_page=string_bw__word(location.hash,"#!","[")}else{requested_page=location.hash.substr(2);}

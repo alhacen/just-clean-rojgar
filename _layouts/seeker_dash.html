@@ -11,15 +11,16 @@
 
 <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4">
     <!-- <li><a href="#!home">Home</a></li> -->
-    <li><a href="#!post_new_job">Post New Job</a></li>
-    <li><a href="#!seekers_applied">Seekers Applied</a></li>
+    <li><a href="#!jobs_available">Available Jobs</a></li>
+    <li><a href="#!jobs_applied">Job applied</a></li>
+    <li><a href="#!profile">Profile</a></li>
 </ul>
   <div id="main" style="background-color:#e6e6e6">
     <nav class="white">
         <div class="nav-wrapper ">
             <a href="#" class="brand-logo"><img style="height:60px" src="https://static.wixstatic.com/media/bcdc7c_6c5b74d623b1425f8417c5e6018ac7d7~mv2.png/v1/fill/w_265,h_64,al_c,q_80,usm_0.66_1.00_0.01/Logo.webp"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#sass.html">Home</a></li>
+            <!-- <li><a href="#sass.html">Home</a></li> -->
             <li class="last_nav_link"><a href="/">Log Out</a></li>
             </ul>
         </div>
@@ -33,9 +34,10 @@
 </body>
 </html>
 <script>
+    /*
     	//{"title":"new_one","job_profile":"job profile","duration":"duration in days","criteria":"creteria for job","experience":"if !any experience then =>0","last_date":"last date to apply for job"}
 	if(localStorage.getItem("jobs")==undefined||localStorage.getItem("jobs")=="[]"){
-        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"4"},{"job_id":"931","seekers_applied":"32","job_title":"developer","job_description":"have to create react app","job_profile":"IT / ITeS","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"1002","seekers_applied":"66","job_title":"drill operator","job_description":"have to operate drill machine","job_profile":"Machine Operator / Helper","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"2234","seekers_applied":"83","job_title":"drive","job_description":"have to drive bus from jamia to batla house ","job_profile":"Driver (Private Vehicles)","job_creteria":"10th Pass","job_experience":"Experience (1 to 2 yrs)"}]');
+        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"4"}]');
     }
     function update_job_list(){
         _("employer_job_lists").innerHTML="";
@@ -54,6 +56,7 @@
     }
     update_job_list();
     update_applied_seekers_list();
+    */
 	//
     function _(a){return document.getElementById(a)}
     var elems = document.querySelectorAll('.tabs');
@@ -71,10 +74,10 @@
     });
     
 
-    var pages=["home","post_new_job","seekers_applied","add_job_form"]; // allowed pages
-    var functions=["display_applied_seekers"]
+    var pages=["home","jobs_available","jobs_applied","profile"]; // allowed pages
+    var functions=["asdf"]
 	current_page="";
-	default_page=["post_new_job"] //open page if ther is no hash
+	default_page=["jobs_available"] //open page if ther is no hash
 	function change_page() {
 		if(pages.includes(location.hash.substr(2)) || location.hash=="" || location.hash=="#!" || functions.includes(string_bw__word(location.hash,"#!","["))){
             if(functions.includes(string_bw__word(location.hash,"#!","["))){requested_page=string_bw__word(location.hash,"#!","[")}else{requested_page=location.hash.substr(2);}
