@@ -102,19 +102,17 @@ home
         </ul>
 </div>
 <div class="pages card" style="padding:25px" id="display_applied_seekers">
-asdf
+    <ul id="display_applied_seekers_list" class="collection">
+        <li class="collection-item">            
+            <div class="row">
+                <div class="col s6"><a href="#!">Title</a></div>
+                <div class="col s4">Description</div>
+                <div class="col s2"><a href="#!">Delete</a></div>
+            </div>
+        </li>
+    </ul>
 </div>
 <style>
     /* .collection li a{padding:15px!important} */
     .collection div{margin:0!important}
 </style>
-<script>
-var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private Vehicles)","Driver (Commercial Vehicles)","Driver (Heavy Vehicles - Bus, Truck, etc.)","Bouncer","Security Staff","Security Guard","Security Guard (Armed)","PSO (Personal Security Officer)","Computer Operator","Data Entry Operator","Plumber","Electrician","Housekeeping Staff","Retail Sales Staff","Retail Store Keeper","Cashier","Sales Manager","Field Officer","Supervisor","Beautician","BPO / Call Centre","Receptionist","Management / Admin","HR","Accounts Executive","GST Executive","ESIC / PF Executive","Cook","Tailor","Delivery Jobs","Carpenter","Painter","Mason","Construction Worker","Bar Binder","Welder","CNC machine operator","Fitter","Domestic Help / Maid / Home-cleaning","Rider","AC Repairing / AC Service","Electronics Repair","Home Appliances Repair","Waiter (Restaurant)","Bartender","Hair Dresser (Male)","Hair Dresser (Female)","Personal Assistant","Peon","DG Operator","STP Operator","WTP Operator","Lift Operator","Lift Technician","Water Tank Cleaner","Car Washer / Cleaner","Web Designer","Web Developer","Graphic Designer","Fitness Trainer","Yoga Trainer","Logistics Staff (Loading / Unloading )","Packaging Staff","Warehouse Staff","Nursing Staff","Patient Care","Baby Sitter / Nanny / Mother Care","Parking Management Staff","MST (Multi Tasking Staff)","Housekeeping Supervisor","Security Supervisor","Training Supervisor","Landscaping supervisor","Plumbing Supervisor","Manpower Mobiliser","Leather Worker","Dairy Worker","Façade Cleaner","Band-Baaja Staff","Party Singers","Others",]
-	for(i=0;i<job_profile_list.length;i++){
-		var option = document.createElement("option");
-		option.text = job_profile_list[i];
-		option.value = job_profile_list[i];
-		var select = _("job_profile");
-		select.appendChild(option);
-	}
-</script>

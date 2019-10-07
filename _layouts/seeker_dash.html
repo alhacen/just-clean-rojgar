@@ -34,45 +34,8 @@
 </body>
 </html>
 <script>
-    /*
-    	//{"title":"new_one","job_profile":"job profile","duration":"duration in days","criteria":"creteria for job","experience":"if !any experience then =>0","last_date":"last date to apply for job"}
-	if(localStorage.getItem("jobs")==undefined||localStorage.getItem("jobs")=="[]"){
-        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"4"}]');
-    }
-    function update_job_list(){
-        _("employer_job_lists").innerHTML="";
-        jobs=JSON.parse(localStorage.getItem("jobs"));
-        for(i=0;i<jobs.length;i++){
-            _("employer_job_lists").innerHTML+='<li class="collection-item"> <div class="row"> <div class="col s6"><span style="margin-right:10px;margin-left:-10px">'+(i+1)+'.</span><a href="#!">'+jobs[i]["job_title"]+'</a></div> <div class="col s4">'+jobs[i]['job_profile']+'</div> <div class="col s2"><a onclick="delete_job('+jobs[i]['job_id']+')">Delete</a></div> </div> </li>'
-        }
-    }
-    function update_applied_seekers_list(){
-        _("applied_seekers_list").innerHTML="";
-        jobs=JSON.parse(localStorage.getItem("jobs"));
-        for(i=0;i<jobs.length;i++){
-            //_("applied_seekers_list").innerHTML+='<li class="collection-item"> <div class="row"> <div class="col s6"><span style="margin-right:10px;margin-left:-10px">'+(i+1)+'.</span><a href="#!">'+jobs[i]["job_title"]+'</a></div> <div class="col s4">'+jobs[i]['job_profile']+'</div> <div class="col s2"><a onclick="delete_job('+jobs[i]['job_id']+')">Delete</a></div> </div> </li>'
-            _("applied_seekers_list").innerHTML+='<li class="collection-item" onclick=\'window.location="#!display_applied_seekers['+jobs[i]['job_id']+']"\' style="cursor:pointer"> <div class="row"> <div class="col s12">'+jobs[i]['job_title']+'<span class="new badge green" data-badge-caption="Applications">'+jobs[i]['seekers_applied']+'</span></div> </div> </li>'
-        }
-    }
-    update_job_list();
-    update_applied_seekers_list();
-    */
-	//
-    function _(a){return document.getElementById(a)}
-    var elems = document.querySelectorAll('.tabs');
-    var instance = M.Tabs.init(elems);
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelector('.modal');
-        var instances = M.Modal.init(elems);
-        // instances.open();
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems);
-        var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems);
-    });
-    
+
+
 
     var pages=["home","jobs_available","jobs_applied","profile"]; // allowed pages
     var functions=["asdf"]
@@ -96,7 +59,101 @@
         function_name=escape(string_bw__word(decodeURIComponent(string_bw__word(location.hash,"#!","[")))).replace(/%20/g," ");
 	}
 	window.onhashchange = change_page;
-	change_page();
+    change_page();
+    seeker_data=JSON.parse(localStorage.getItem("seeker_accounts"));
+for(j=0;j<seeker_data.length;j++){
+    if(seeker_data[j]['mobile_no']==sessionStorage.getItem("logged_mobile")){
+        logged_user_id=j;
+        //console.log(i)
+        break;
+    }
+}
+for( var i = 0; i < Object.keys(seeker_data[0]).length; ++i ) {
+    if(Object.keys(seeker_data)[i]!=""){
+        //console.log(Object.keys(seeker_data[j])[i])
+            document.getElementsByName(Object.keys(seeker_data[j])[i])[0].value=seeker_data[j][Object.keys(seeker_data[j])[i]];
+        //console.log(document.getElementsByName(Object.keys(data)[i])[0])
+    }
+}
+function update_seeker_profile(data){
+    ///////
+	seekers=JSON.parse(localStorage.getItem("seeker_accounts"));
+	seekers[logged_user_id]=JSON.parse(data)
+    localStorage.setItem("seeker_accounts",JSON.stringify(seekers))
+    window.location="";
+}
+function seeker_job_apply(id){
+    //if(seeker_data[logged_user_id]['job_applied']=='')
+    for(i=0;i<jobs.length;i++){
+        if(jobs[i]['job_id']==id){jobs[i]['seekers_applied']=parseInt(jobs[i]['seekers_applied'])+1;break;}
+    }
+    localStorage.setItem("jobs",JSON.stringify(jobs))
+    var tmp=JSON.parse(seeker_data[logged_user_id]['job_applied'])
+    tmp.push(id)
+    seeker_data[logged_user_id]['job_applied']=JSON.stringify(tmp)
+    localStorage.setItem("seeker_accounts",JSON.stringify(seeker_data))
+    update_seeker_available_jobs()
+    update_seeker_applied_jobs()
+}
+function seeker_job_cancel(job_id){
+    //if(seeker_data[logged_user_id]['job_applied']=='')
+    for(i=0;i<jobs.length;i++){
+        if(jobs[i]['job_id']==job_id){jobs[i]['seekers_applied']=parseInt(jobs[i]['seekers_applied'])-1;break;}
+    }
+    localStorage.setItem("jobs",JSON.stringify(jobs))
+    var tmp=JSON.parse(seeker_data[logged_user_id]['job_applied'])
+    /////
+    for(i=0;i<tmp.length;i++){
+        if(tmp[i]==job_id){
+            tmp.splice(i,1);
+            break;
+        }
+    }
+    ////////
+    seeker_data[logged_user_id]['job_applied']=JSON.stringify(tmp)
+    localStorage.setItem("seeker_accounts",JSON.stringify(seeker_data))
+    update_seeker_available_jobs()
+    update_seeker_applied_jobs()
+
+}
+function update_seeker_applied_jobs(){
+    _("seeker_applied_jobs").innerHTML="";
+        jobs=JSON.parse(localStorage.getItem("jobs"));
+        for(i=0;i<jobs.length;i++){
+            if(seeker_data[j]["mobile_no"]==sessionStorage.getItem("logged_mobile")){
+                break;
+            }
+        }
+        for(i=0;i<jobs.length;i++){
+            if(jobs[i]['job_profile']==seeker_data[j]["job_profile"] && JSON.parse(seeker_data[j]["job_applied"]).includes(parseInt(jobs[i]["job_id"]))){
+                _("seeker_applied_jobs").innerHTML+='<li class="collection-item" style="cursor:pointer"> <div class="row"> <div class="col s12">'+jobs[i]['job_title']+'<a class="white-text" onclick="seeker_job_cancel('+jobs[i]['job_id']+')" ><span class="new badge green" data-badge-caption="">Cancel</span></a></div> </div> </li>'
+            }
+    }
+}
+function update_seeker_available_jobs(){
+        _("seeker_available_jobs").innerHTML="";
+        jobs=JSON.parse(localStorage.getItem("jobs"));
+        for(i=0;i<jobs.length;i++){
+            if(seeker_data[j]["mobile_no"]==sessionStorage.getItem("logged_mobile")){
+                break;
+            }
+        }
+        for(i=0;i<jobs.length;i++){
+            if(jobs[i]['job_profile']==seeker_data[j]["job_profile"] && !JSON.parse(seeker_data[j]["job_applied"]).includes(parseInt(jobs[i]["job_id"]))){
+                _("seeker_available_jobs").innerHTML+='<li class="collection-item" style="cursor:pointer"> <div class="row"> <div class="col s12">'+jobs[i]['job_title']+'<a class="white-text" onclick="seeker_job_apply('+jobs[i]['job_id']+')" ><span class="new badge green" data-badge-caption="">Apply</span></a></div> </div> </li>'
+            }
+        }
+}
+var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private Vehicles)","Driver (Commercial Vehicles)","Driver (Heavy Vehicles - Bus, Truck, etc.)","Bouncer","Security Staff","Security Guard","Security Guard (Armed)","PSO (Personal Security Officer)","Computer Operator","Data Entry Operator","Plumber","Electrician","Housekeeping Staff","Retail Sales Staff","Retail Store Keeper","Cashier","Sales Manager","Field Officer","Supervisor","Beautician","BPO / Call Centre","Receptionist","Management / Admin","HR","Accounts Executive","GST Executive","ESIC / PF Executive","Cook","Tailor","Delivery Jobs","Carpenter","Painter","Mason","Construction Worker","Bar Binder","Welder","CNC machine operator","Fitter","Domestic Help / Maid / Home-cleaning","Rider","AC Repairing / AC Service","Electronics Repair","Home Appliances Repair","Waiter (Restaurant)","Bartender","Hair Dresser (Male)","Hair Dresser (Female)","Personal Assistant","Peon","DG Operator","STP Operator","WTP Operator","Lift Operator","Lift Technician","Water Tank Cleaner","Car Washer / Cleaner","Web Designer","Web Developer","Graphic Designer","Fitness Trainer","Yoga Trainer","Logistics Staff (Loading / Unloading )","Packaging Staff","Warehouse Staff","Nursing Staff","Patient Care","Baby Sitter / Nanny / Mother Care","Parking Management Staff","MST (Multi Tasking Staff)","Housekeeping Supervisor","Security Supervisor","Training Supervisor","Landscaping supervisor","Plumbing Supervisor","Manpower Mobiliser","Leather Worker","Dairy Worker","Façade Cleaner","Band-Baaja Staff","Party Singers","Others",]
+for(i=0;i<job_profile_list.length;i++){
+    var option = document.createElement("option");
+    option.text = job_profile_list[i];
+    option.value = job_profile_list[i];
+    var select = _("job_profile");
+    select.appendChild(option);
+}
+update_seeker_available_jobs()
+update_seeker_applied_jobs()
 </script>
 <style>
         header, #main, footer {

@@ -35,7 +35,24 @@
 <script>
     	//{"title":"new_one","job_profile":"job profile","duration":"duration in days","criteria":"creteria for job","experience":"if !any experience then =>0","last_date":"last date to apply for job"}
 	if(localStorage.getItem("jobs")==undefined||localStorage.getItem("jobs")=="[]"){
-        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"4"},{"job_id":"931","seekers_applied":"32","job_title":"developer","job_description":"have to create react app","job_profile":"IT / ITeS","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"1002","seekers_applied":"66","job_title":"drill operator","job_description":"have to operate drill machine","job_profile":"Machine Operator / Helper","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"2234","seekers_applied":"83","job_title":"drive","job_description":"have to drive bus from jamia to batla house ","job_profile":"Driver (Private Vehicles)","job_creteria":"10th Pass","job_experience":"Experience (1 to 2 yrs)"}]');
+        localStorage.setItem("jobs", '[{"job_id":"1","job_title":"demo","job_profile":"no profile","duration":"60 days","criteria":"no creteria","experience":"if !any experience then =>0","last_date":"15-05-2019","description":"bla bla bla bla bla","seekers_applied":"0"},{"job_id":"931","seekers_applied":"0","job_title":"developer","job_description":"have to create react app","job_profile":"IT / ITeS","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"1002","seekers_applied":"0","job_title":"drill operator","job_description":"have to operate drill machine","job_profile":"Machine Operator / Helper","job_creteria":"12th Pass","job_experience":"Experience (0 to 1 yrs)"},{"job_id":"2234","seekers_applied":"0","job_title":"drive","job_description":"have to drive bus from jamia to batla house ","job_profile":"Driver (Private Vehicles)","job_creteria":"10th Pass","job_experience":"Experience (1 to 2 yrs)"}]');
+    }
+    function display_applied_seekers(job_id){
+        _("display_applied_seekers_list").innerHTML="";
+        seeker_data=JSON.parse(localStorage.getItem("seeker_accounts"));
+        var tmp_count=0;
+        for(j=0;j<seeker_data.length;j++){
+            if(JSON.parse(seeker_data[j]['job_applied']).includes(parseInt(job_id))){
+                tmp_count++;
+                _("display_applied_seekers_list").innerHTML+='<li class="collection-item"> <div class="row"> <div class="col s6">'+seeker_data[j]['candidate_name']+'</div> <div class="col s4">'+seeker_data[j]['job_experience']+'</div> <div class="col s2"></div> </div> </li>'
+                
+            }
+        }
+        if(tmp_count==0){
+            _("display_applied_seekers_list").innerHTML+='<li class="collection-item"> <div class="row"> <div class="col s6">0 applications</div> <div class="col s4"></div> <div class="col s2"></div> </div> </li>'
+
+        }
+
     }
     function update_job_list(){
         _("employer_job_lists").innerHTML="";
@@ -83,17 +100,32 @@
                 _(current_page.substr(2)).style.display="none";
             }if(location.hash=="" || location.hash=="#!"){        
                 location.hash="#!"+default_page;
-            }else if(pages.includes(requested_page)){
+            }else if(pages.includes(requested_page) || functions.includes(requested_page)){
                 _(requested_page).style.display="block";
+                if(requested_page=="display_applied_seekers"){
+                    function_parameter=escape(string_bw__word(decodeURIComponent(string_bw__word(location.hash,"[","]")))).replace(/%20/g," ");
+                    function_name=escape(string_bw__word(decodeURIComponent(string_bw__word(location.hash,"#!","[")))).replace(/%20/g," ");
+                    display_applied_seekers(function_parameter)
+                }
             }
             current_page="#!"+requested_page;
 		}else if(functions.includes(string_bw__word(location.hash,"#!","[")) || location.hash==""){
+            //console.log()
         }
         function_parameter=escape(string_bw__word(decodeURIComponent(string_bw__word(location.hash,"[","]")))).replace(/%20/g," ");
         function_name=escape(string_bw__word(decodeURIComponent(string_bw__word(location.hash,"#!","[")))).replace(/%20/g," ");
+        //alert(function_name)
 	}
 	window.onhashchange = change_page;
-	change_page();
+    change_page();
+    var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private Vehicles)","Driver (Commercial Vehicles)","Driver (Heavy Vehicles - Bus, Truck, etc.)","Bouncer","Security Staff","Security Guard","Security Guard (Armed)","PSO (Personal Security Officer)","Computer Operator","Data Entry Operator","Plumber","Electrician","Housekeeping Staff","Retail Sales Staff","Retail Store Keeper","Cashier","Sales Manager","Field Officer","Supervisor","Beautician","BPO / Call Centre","Receptionist","Management / Admin","HR","Accounts Executive","GST Executive","ESIC / PF Executive","Cook","Tailor","Delivery Jobs","Carpenter","Painter","Mason","Construction Worker","Bar Binder","Welder","CNC machine operator","Fitter","Domestic Help / Maid / Home-cleaning","Rider","AC Repairing / AC Service","Electronics Repair","Home Appliances Repair","Waiter (Restaurant)","Bartender","Hair Dresser (Male)","Hair Dresser (Female)","Personal Assistant","Peon","DG Operator","STP Operator","WTP Operator","Lift Operator","Lift Technician","Water Tank Cleaner","Car Washer / Cleaner","Web Designer","Web Developer","Graphic Designer","Fitness Trainer","Yoga Trainer","Logistics Staff (Loading / Unloading )","Packaging Staff","Warehouse Staff","Nursing Staff","Patient Care","Baby Sitter / Nanny / Mother Care","Parking Management Staff","MST (Multi Tasking Staff)","Housekeeping Supervisor","Security Supervisor","Training Supervisor","Landscaping supervisor","Plumbing Supervisor","Manpower Mobiliser","Leather Worker","Dairy Worker","Façade Cleaner","Band-Baaja Staff","Party Singers","Others",]
+	for(i=0;i<job_profile_list.length;i++){
+		var option = document.createElement("option");
+		option.text = job_profile_list[i];
+		option.value = job_profile_list[i];
+		var select = _("job_profile");
+		select.appendChild(option);
+	}
 </script>
 <style>
         header, #main, footer {

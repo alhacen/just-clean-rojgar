@@ -14,6 +14,8 @@ home
                 <input id="candidate_name" name="candidate_name" type="text" class="validate" iform_init='{"required":true,"alert":true,"name":"Candidate Name"}'>
                 <label for="candidate_name">Candidate Name</label>
             </div>
+            <input type="hidden" name="otp">
+            <input type="hidden" name="job_applied">
             <div class="col l8 s12 input-field ">
                 <input id="address" name="address" type="text" class="validate" iform_init='{"required":true,"alert":true,"name":"Address"}'>
                 <label for="address">Address</label>
@@ -58,7 +60,7 @@ home
                 </select>
             </div>
             <div class="col l4 s12 input-field ">
-                <select id="job_profile" iform_init='{"required":true,"alert":true,"name":"Applied Position Required"}'>
+                <select id="job_profile" name="job_profile" iform_init='{"required":true,"alert":true,"name":"Applied Position"}'>
                 <option value="" disabled selected>Position applied for</option>
                 </select>
             </div>
@@ -70,32 +72,43 @@ home
                 <input id="additional_job_for" name="additional_applied_job" type="text" class="validate">
                 <label for="additional_job_for">Mention any Additional Job Applied For</label>
             </div>
-            <div class="center"><input type="button" onclick="submit_iform(this)" value="Update" class="btn green "></div>
+            <div class="center"><input type="button" onclick="submit_iform(this,update_seeker_profile)" value="Update" class="btn green "></div>
         </form>
     </div>
 </div>
 <div class="pages" id="jobs_available">
     <div>
         <div class="row">
-        a
+         <ul id="seeker_available_jobs" class="collection">
+            <li class="collection-item" style="cursor:pointer">   
+                <div class="row">
+                    <div class="col s12">Title<span class="new badge green" data-badge-caption=""><a class="white-text" onclick="seeker_job_apply()" >Apply</a></span></div> 
+                </div>
+            </li>
+        </ul>
         </div>
     </div>
 </div>
 <div class="pages" id="jobs_applied">
-b
+    <div>
+        <div class="row">
+         <ul id="seeker_applied_jobs" class="collection">
+            <li class="collection-item" style="cursor:pointer">   
+                <div class="row">
+                    <div class="col s12">Title<span class="new badge green" data-badge-caption=""><a class="white-text" onclick="seeker_job_apply()" >Apply</a></span></div> 
+                </div>
+            </li>
+        </ul>
+        </div>
+    </div>
 </div>
 <style>
     /* .collection li a{padding:15px!important} */
     .collection div{margin:0!important}
 </style>
 <script>
-var job_profile_list=["Machine Operator / Helper","IT / ITeS","Driver (Private Vehicles)","Driver (Commercial Vehicles)","Driver (Heavy Vehicles - Bus, Truck, etc.)","Bouncer","Security Staff","Security Guard","Security Guard (Armed)","PSO (Personal Security Officer)","Computer Operator","Data Entry Operator","Plumber","Electrician","Housekeeping Staff","Retail Sales Staff","Retail Store Keeper","Cashier","Sales Manager","Field Officer","Supervisor","Beautician","BPO / Call Centre","Receptionist","Management / Admin","HR","Accounts Executive","GST Executive","ESIC / PF Executive","Cook","Tailor","Delivery Jobs","Carpenter","Painter","Mason","Construction Worker","Bar Binder","Welder","CNC machine operator","Fitter","Domestic Help / Maid / Home-cleaning","Rider","AC Repairing / AC Service","Electronics Repair","Home Appliances Repair","Waiter (Restaurant)","Bartender","Hair Dresser (Male)","Hair Dresser (Female)","Personal Assistant","Peon","DG Operator","STP Operator","WTP Operator","Lift Operator","Lift Technician","Water Tank Cleaner","Car Washer / Cleaner","Web Designer","Web Developer","Graphic Designer","Fitness Trainer","Yoga Trainer","Logistics Staff (Loading / Unloading )","Packaging Staff","Warehouse Staff","Nursing Staff","Patient Care","Baby Sitter / Nanny / Mother Care","Parking Management Staff","MST (Multi Tasking Staff)","Housekeeping Supervisor","Security Supervisor","Training Supervisor","Landscaping supervisor","Plumbing Supervisor","Manpower Mobiliser","Leather Worker","Dairy Worker","Façade Cleaner","Band-Baaja Staff","Party Singers","Others",]
-for(i=0;i<job_profile_list.length;i++){
-    var option = document.createElement("option");
-    option.text = job_profile_list[i];
-    option.value = job_profile_list[i];
-    var select = _("job_profile");
-    select.appendChild(option);
-}
-    
+
+/*  <tmp> */
+
+/*  </tmp>  */
 </script>
